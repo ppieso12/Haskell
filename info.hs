@@ -22,8 +22,18 @@ konkatenacja (h:t) l2 = h : (konkatenacja t l2)
 (x:t) +++ lb = x:(+++) t lb
 infixr 5 +++
 
+KOMPOZYCJA map (not ... even) [1..5]
+(...) :: (b->c) -> (a->b) -> a -> c
+(...) f y = \x -> f $y x
+infixr 9 ...
 
-LAMBDA EXPRESSION - anonimowa klasa wew w javie
+MAP ZA POMOCĄ FOLDR
+map' :: (a->b) -> [a] -> [b]
+map' f []       = []
+-LUB- map' f xs       = foldr (\x xs -> (f x):xs) [] xs
+map' f xs = foldr ((:).f) [] xs
+
+LAMBDA EXPRESSION - anonimowa klasa wew w javie \te pierwsze to parametry
 map (\x -> x+1) [1..5]
 
 Types that can act like a box can be functors. You can think of a list as a box that has an infinite amount of little compartments 
