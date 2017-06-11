@@ -62,6 +62,7 @@ class Functor f where
 instance Functor Maybe where
     fmap func (Just val) = Just (func val)
     fmap func Nothing = Nothing
+    
 instance Functor Tree where  
         fmap f EmptyTree = EmptyTree  
         fmap f (Node x leftsub rightsub) = Node (f x) (fmap f leftsub) (fmap f rightsub)      
@@ -139,4 +140,7 @@ instance Monad [] where
     return x = [x]  
     xs >>= f = concat (map f xs)  
     fail _ = []      
+    
+    
+main = reverse <$> getLine >>= putStrLn
     
