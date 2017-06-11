@@ -135,5 +135,8 @@ Just x >>= f  = f x
 fail _ = Nothing
     
     
-    
+instance Monad [] where  
+    return x = [x]  
+    xs >>= f = concat (map f xs)  
+    fail _ = []      
     
